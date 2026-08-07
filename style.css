@@ -1,0 +1,118 @@
+body {
+  font-family: 'STIX Two Text', serif;
+  scroll-behavior: smooth;
+  background:
+    radial-gradient(circle at top left, rgba(255,255,255,0.12), transparent 35%),
+    radial-gradient(circle at bottom right, rgba(0,0,0,0.08), transparent 40%),
+    linear-gradient(135deg, #5B1717 0%, #7A2323 45%, #3B1212 100%);
+  color: #2B1B12;
+  min-height: 100vh;
+}
+
+/* Soft parchment texture */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.10;
+  background-image:
+    repeating-linear-gradient(
+      0deg,
+      rgba(255,255,255,0.08) 0px,
+      rgba(255,255,255,0.08) 1px,
+      transparent 1px,
+      transparent 6px
+    ),
+    repeating-linear-gradient(
+      90deg,
+      rgba(0,0,0,0.04) 0px,
+      rgba(0,0,0,0.04) 1px,
+      transparent 1px,
+      transparent 8px
+    );
+}
+
+/* Main content wrapper */
+#app main {
+  background: rgba(244, 231, 204, 0.90);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(183, 139, 91, 0.45);
+  box-shadow:
+    0 20px 40px rgba(0,0,0,0.18),
+    inset 0 1px 0 rgba(255,255,255,0.35);
+  border-radius: 2rem;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+
+/* Section cards */
+section,
+.rounded-2xl,
+.rounded-\[2rem\] {
+  background: rgba(250, 243, 224, 0.88) !important;
+  border: 1px solid rgba(183, 139, 91, 0.55) !important;
+  box-shadow:
+    0 10px 24px rgba(43,27,18,0.10),
+    inset 0 1px 0 rgba(255,255,255,0.28);
+  backdrop-filter: blur(8px);
+}
+
+/* Header banner */
+.bg-gradient-to-r {
+  background:
+    linear-gradient(135deg,
+      rgba(231,211,176,0.95),
+      rgba(244,231,204,0.92),
+      rgba(216,187,140,0.88)) !important;
+  border: 1px solid rgba(183, 139, 91, 0.65) !important;
+}
+
+/* Titles */
+.text-roseBrand {
+  color: #6B1F1F !important;
+  text-shadow: 0 1px 0 rgba(255,255,255,0.35);
+}
+
+h2, h3, h4 {
+  letter-spacing: 0.02em;
+}
+
+/* Small schedule / quick link cards */
+.bg-white {
+  background: rgba(255,250,240,0.92) !important;
+}
+
+.bg-roseSoft {
+  background: rgba(244,231,204,0.70) !important;
+}
+
+.bg-roseLight {
+  background: rgba(231,211,176,0.85) !important;
+}
+
+/* Quick links hover */
+#quickLinks a {
+  transition: transform .22s ease, box-shadow .22s ease, background-color .22s ease;
+}
+
+#quickLinks a:hover {
+  transform: translateY(-3px);
+  background: rgba(231,211,176,0.95) !important;
+  box-shadow: 0 12px 28px rgba(43,27,18,0.18);
+}
+
+/* Tables */
+table tr {
+  background: rgba(255,250,240,0.94) !important;
+}
+
+/* Deadline colors remain readable */
+.text-red-600 { color: #8B1E1E !important; }
+.text-orange-500 { color: #B06A00 !important; }
+.text-green-600 { color: #2E6B3A !important; }
+
+/* Loader matches theme */
+.shimmer {
+  background: rgba(231,211,176,0.55);
+}

@@ -51,65 +51,6 @@
 
     <!-- Main -->
 <main id="top" class="flex-1 p-4 lg:p-8 max-w-7xl mx-auto w-full pb-24">
-  <!-- HSH FIVE Logo with Decorative Flourishes -->
-<div class="flex items-center justify-center gap-4 md:gap-8 mb-6">
-
-  <!-- Left flourish -->
-  <svg class="w-24 md:w-40 text-[#B78B5B] opacity-80"
-       viewBox="0 0 200 40"
-       fill="none"
-       xmlns="http://www.w3.org/2000/svg">
-    <path d="M2 20
-             C20 5, 40 5, 58 20
-             S96 35, 114 20
-             S152 5, 170 20
-             S188 35, 198 20"
-          stroke="currentColor"
-          stroke-width="2.5"
-          stroke-linecap="round"/>
-    <path d="M30 20 C42 12, 52 12, 64 20"
-          stroke="currentColor"
-          stroke-width="1.5"
-          stroke-linecap="round"
-          opacity="0.7"/>
-    <path d="M136 20 C148 12, 158 12, 170 20"
-          stroke="currentColor"
-          stroke-width="1.5"
-          stroke-linecap="round"
-          opacity="0.7"/>
-  </svg>
-
-  <!-- Logo -->
-  <img src="Untitled design (1).png"
-       alt="HSH FIVE"
-       class="w-32 md:w-40 opacity-95 drop-shadow-[0_8px_16px_rgba(0,0,0,0.35)]">
-
-  <!-- Right flourish -->
-  <svg class="w-24 md:w-40 text-[#B78B5B] opacity-80"
-       viewBox="0 0 200 40"
-       fill="none"
-       xmlns="http://www.w3.org/2000/svg">
-    <path d="M2 20
-             C20 5, 40 5, 58 20
-             S96 35, 114 20
-             S152 5, 170 20
-             S188 35, 198 20"
-          stroke="currentColor"
-          stroke-width="2.5"
-          stroke-linecap="round"/>
-    <path d="M30 20 C42 12, 52 12, 64 20"
-          stroke="currentColor"
-          stroke-width="1.5"
-          stroke-linecap="round"
-          opacity="0.7"/>
-    <path d="M136 20 C148 12, 158 12, 170 20"
-          stroke="currentColor"
-          stroke-width="1.5"
-          stroke-linecap="round"
-          opacity="0.7"/>
-  </svg>
-
-</div>
 
   <!-- Header Banner -->
   <section class="bg-gradient-to-r from-[#F8EDEF] via-[#F6E7EA] to-[#F9F1F3] border border-borderSoft rounded-[2rem] p-6 lg:p-8 mb-6">
@@ -139,10 +80,15 @@
       WE HAVE NO CLASSES TODAY!
     </h4>
 
-    <p class="text-lg leading-8 text-gray-800">
-      Take this time to catch up on your tasks and prepare for the week ahead.
-      Stay productive, everyone!
-    </p>
+<p class="text-lg leading-8 text-gray-800">
+  Take this time to catch up on your tasks and prepare for the week ahead.
+  Stay productive, everyone!
+</p>
+
+<p id="lastUpdated" class="mt-3 text-sm text-gray-500 flex items-center gap-2">
+  <span>🕒</span>
+  <span>Loading last update...</span>
+</p>
   </section>
 
   <!-- Weekly Schedule -->
@@ -528,6 +474,31 @@
       history.replaceState({ home: true }, '', location.pathname);
     }
   </script>
+      <script>
+async function loadLastUpdated() {
+  try {
+    const response = await fetch(
+      'https://api.github.com/repos/karllexterdulce/karllexterdulce.github.io/commits?path=index.html&page=1&per_page=1'
+    );
+
+    const data = await response.json();
+    const commitDate = data[0].commit.committer.date;
+
+    const formatted = new Date(commitDate).toLocaleString('en-PH', {
+      dateStyle: 'medium',
+      timeStyle: 'short'
+    });
+
+    document.getElementById('lastUpdated').innerHTML =
+      `<span>🕒</span><span>Last updated: ${formatted}</span>`;
+  } catch (error) {
+    document.getElementById('lastUpdated').innerHTML =
+      '<span>🕒</span><span>Last updated: unavailable</span>';
+  }
+}
+
+loadLastUpdated();
+</script>
 
 </body>
 </html>
